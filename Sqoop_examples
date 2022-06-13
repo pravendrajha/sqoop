@@ -1,0 +1,62 @@
+sqoop list-databases \
+  --connect "jdbc:mysql://localhost:3306" \
+  --username sqoopuser  \
+  --password test123  
+  
+  sqoop list-tables \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123  
+  
+  
+  
+  sqoop import \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123  
+  --table departments \
+  
+   
+  sqoop import \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123  \
+  --table departments \
+  --delete-target-dir 
+  
+  
+  
+  sqoop eval \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123 \   
+  --query "select count(1) from order_items" 
+  
+  
+  sqoop import-all-tables \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123  \  
+  
+  
+  sqoop import-all-tables \
+  -m 12 \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123    
+  
+  
+  sqoop import\
+  --num-mappers 1 \
+  --connect "jdbc:mysql://localhost:3306/retail_db" \
+  --username sqoopuser  \
+  --password test123  \
+  --table order_items \
+  --hive-import \
+  --hive-databases test_pravjha \
+  --hive-overwrite \
+  --create-hive-table \
+  --compress \
+  --compression-codec org.apache.hadoop.io.compress.SnappyCodec \
+  --outdir java_files \
+  
